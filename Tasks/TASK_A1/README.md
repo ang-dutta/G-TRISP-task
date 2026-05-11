@@ -57,7 +57,7 @@ Tasks/
 │   ├── requirements.txt
 │   └── README.md
 │
-├── TASK_B2/
+└── TASK_B1/
 ```
 
 ---

@@ -343,7 +343,7 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 
 def clean_value(value):
     if value is None:
-        return np.nan
+        return None
 
     value = str(value).strip()
 
@@ -409,7 +409,8 @@ def process_multiple_pdfs(pdf_paths: list):
         try:
             text = extract_text_from_pdf(path)
             record = extract_fields(text)
-            record["source_pdf"] = os.path.basename(path)
+            # Place source_pdf as the first column for easy identification.
+            record = {"source_pdf": os.path.basename(path), **record}
             records.append(record)
         except Exception as e:
             print(f"Error processing {path}")
